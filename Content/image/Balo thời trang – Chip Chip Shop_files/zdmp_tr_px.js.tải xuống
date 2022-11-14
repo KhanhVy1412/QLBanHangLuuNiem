@@ -1,0 +1,107 @@
+(function zTrkInit(w, d, t, s, zsdks) {
+  s = d.getElementsByTagName('script')[0];
+
+  var zTrkSessionId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0;
+      return (c === 'x' ? r : r & (0x3|0x8)).toString(16);
+  });
+
+  if (!w.ZA) {
+    if (!t) {
+      zsdks = d.createElement('script');
+      zsdks.type = 'text/javascript';
+      zsdks.src = 'https://stc.za.zaloapp.com/v3/za.js?v=2.0';
+      zsdks.async = false;
+      s.parentNode.insertBefore(zsdks, s);
+      t = setInterval(function () {
+        zTrkInit(w, d, t);
+      }, 2000);
+    }
+
+    var q = w.ztr.queue || [];
+
+    w.ztr = function (action, event, args) {
+      w.ztr.queue.push({
+        'action': 'track',
+        'event': event ? String(event) : '',
+        'arguments': Object.assign({}, args)
+      });
+    };
+
+    w.ztr.queue = q || [];
+    return;
+  }
+
+  if (t) {
+    clearInterval(t);
+  }
+
+  var q = w.ztr.queue || [];
+
+  w.ztr = function (action, event, args) {
+    switch (action) {
+      case 'init':
+        localStorage.setItem('zdmp_px_id', '' + event);
+        break;
+
+      case 'track':
+        if (!w.ZA) {
+          w.ztr.queue = w.ztr.queue || [];
+          w.ztr.queue.push({
+            'action': 'track',
+            'event': event ? String(event) : '',
+            'arguments': Object.assign({}, args)
+          });
+          zTrkInit(w, d);
+          return;
+        }
+
+        var eventString = event ? '&event=' + event : '';
+        var queryString = args ? Object.keys(args).map(function (key) {
+          return '&p[' + key + "]=" + args[key];
+        }).join('') : '';
+        var pixelId = localStorage.getItem('zdmp_px_id');
+        var additionalInfoString = '&sessionId=' + zTrkSessionId + '&time=' + Date.now();
+
+        if (!pixelId) {
+          console.log('Pixel ID is not correctly initialized.');
+          return;
+        }
+
+        w.ZA.getVisitorID(function () {
+          var pxImg = new Image();
+          pxImg.src = 'https://px.dmp.zaloapp.com/tr?id=' + pixelId + '&version=1.0' + eventString + queryString + additionalInfoString + '&zscript=1';
+          var vid = getCookie('__zi');
+          if (vid) {
+            pxImg.src += '&vid=' + vid;
+          }
+        });
+        break;
+
+
+      default:
+        console.log('Unsupported action: ' + action);
+    }
+  };
+
+  ztr.callMethod = ztr;
+
+  var getCookie = function(cname) {
+    var cookies = document.cookie.split(';');
+    var sep = cname + '=';
+    for (var i = 0; i < cookies.length; i++) {
+      var c = cookies[i].trim();
+      if (c.indexOf(sep) === 0) {
+        return c.substring(sep.length, c.length);
+      }
+    }
+    return '';
+  };
+
+  if (q.length) {
+    q.forEach(function (p) {
+      ztr(p.action, p.event, p.args);
+    });
+    w.ztr.queue = [];
+  }
+})(window, document);

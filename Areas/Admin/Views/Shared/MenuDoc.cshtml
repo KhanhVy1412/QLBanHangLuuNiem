@@ -1,0 +1,92 @@
+﻿<style>
+    .cot-trai{
+      float:left;
+      width:20%;
+  }
+   .cot-phai{
+      float:right;
+      width:75%;
+  }
+   .lop-menu-doc-den{
+    list-style: none;
+    padding-left: 0px;
+    background-color:darkred;
+    color: white;
+
+}
+.lop-menu-doc-den >li{
+    border-bottom: gainsboro solid thin;
+    padding: 5px;
+   
+}
+
+.lop-menu-doc-xam{
+    list-style: none;
+    padding-left:0px;
+    background-color:darkgray;
+    color:white;
+  
+}
+.lop-menu-doc-xam >li{
+    border-bottom: gray solid thin;
+    padding: 5px;
+
+}
+.lop-menu-doc-xam a{
+    color: black;
+}
+.lop-menu-doc-xam a:link{
+    text-decoration: none;
+    padding: 5px;
+}
+.lop-menu-doc-xam a:hover{
+    color:aquamarine;
+}
+        
+
+</style>
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <meta name="viewport" content="width=device-width" />
+    <title>MenuDoc</title>
+</head>
+<body>
+  
+    <div> 
+        <div class="cot-bao">
+            <div class="cot-trai">
+                <ul class="lop-menu-doc-den">
+                    <li>DANH MỤC</li>
+                </ul>
+                <ul class="lop-menu-doc-xam">
+                    <li style="color:darkred;font-size:100%"><b>ĐỒ DÙNG CÁ NHÂN</b></li>
+                    <li><a href="@Url.Action("Balo", "SanPham")">Balo,Túi,Ví</a></li>
+                    <li><a href="@Url.Action("DongHo", "SanPham")">Đồng hồ</a></li>
+                    <li><a href="@Url.Action("MatKinh", "SanPham")">Mắt kính</a></li>
+                    <li style="color:darkred;font-size:100%"><b>ĐỒ DÙNG TIỆN ÍCH</b></li>
+                    <li><a href="@Url.Action("LamDep", "SanPham")">Phụ kiện làm đẹp</a></li>
+                    <li><a href="@Url.Action("MocKhoa", "SanPham")">Móc khóa</a></li>
+                    <li><a href="@Url.Action("VanPhongPham", "SanPham")">Văn phòng phẩm</a></li>
+                    <li style="color:darkred;font-size:100%"><b>PHỤ KIỆN & CÔNG NGHỆ</b></li>
+                    <li><a href="@Url.Action("TrangSuc", "SanPham")">Trang sức</a></li>
+                    <li><a href="@Url.Action("DuLich", "SanPham")">Phụ kiện du lịch</a></li>
+                    <li style="color:darkred;font-size:100%"><b>QUÀ LƯU NIỆM</b></li>
+                    <li><a href="@Url.Action("Idol", "SanPham")">Bộ sưu tập idol</a></li>
+                    <li><a href="@Url.Action("TrungBay", "SanPham")">Trưng bày</a></li>
+                    <li><a href="@Url.Action("GiaDung", "SanPham")">Gia dụng</a></li>
+                </ul>
+
+            </div>
+            </div>
+        </div>
+</body>
+</html>

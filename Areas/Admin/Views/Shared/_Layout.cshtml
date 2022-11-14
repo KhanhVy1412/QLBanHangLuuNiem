@@ -1,0 +1,215 @@
+﻿<style>
+    .lop-ban-quyen {
+        clear: both;
+    }
+
+    .lop-ban-q-trai {
+        float: left;
+        width: 40%;
+        text-align: center;
+    }
+
+    .lop-ban-q-phai {
+        float: right;
+        width: 60%;
+        text-align: right;
+    }
+
+      .container-1 {
+        width: 160px;
+        vertical-align: middle;
+        white-space: nowrap;
+        position: relative;
+        margin-left: 10px;
+    }
+
+        .container-1 input#search {
+            width: 30px;
+            margin-top: 0px;
+            height: 30px;
+            background: #2b303b;
+            border: none;
+            font-size: 10pt;
+            float: left;
+            color: #262626;
+            padding-left: 35px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            boder-radius: 5px;
+            color: #fff;
+            /*Hiệu ứng chuyển tiếp*/
+            -webkit-transition: width .55s ease;
+            -moz-transition: width.55s ease;
+            -o-transition: width .55s ease;
+            transition: width .55s ease;
+            margin-bottom:10px;
+        }
+
+            .container-1 input#search:-webkit-input-placeholder {
+                color: #65737e;
+            }
+
+            .container-1 input#search:-moz-placeholder { /*Firefox 18- */
+                color: #65737e;
+            }
+
+            .container-1 input#search:-moz-placeholder { /*Firefox 19+ */
+                color: #65737e;
+            }
+
+            .container-1 input#search:-ms-input-placeholder {
+                color: #65737e;
+            }
+        /*Biểu tượng*/
+        .container-1 .icon {
+            position: absolute;
+            top: 10%;
+            margin-left: 12px;
+            margin-top: 5px;
+            z-index: 1;
+            color: #fff;
+            margin-bottom:7px;
+        }
+        /* Hiệu ứng Hover */
+        .container-1 input#search:focus, .container-1 input#search:active {
+            outline: none;
+            width: 160px;
+            color: #65737e;
+        }
+
+        .container-1:hover input#search {
+            width: 160px;
+            color: #65737e;
+        }
+
+        .container-1:hover .icon {
+            color: #93a2ad;
+        }
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="background-color:black;color:white">
+    @Html.Partial("~/Areas/admin/Views/Shared/MenuDoc.cshtml")
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Trang chủ", "Index", "SanPham", new { area = "Admin" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Đồ dùng cá nhân
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:darkgrey">
+                            <li><a href="@Url.Action("Balo", "SanPham")">Balo,Túi,Ví</a></li>
+                            <li><a href="@Url.Action("DongHo", "SanPham")">Đồng hồ</a></li>
+                            <li><a href="@Url.Action("MatKinh", "SanPham")">Mắt kính</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Đồ dùng tiện ích
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:darkgrey">
+                            <li><a href="@Url.Action("LamDep", "SanPham")">Phụ kiện làm đẹp</a></li>
+                            <li><a href="@Url.Action("MocKhoa", "SanPham")">Móc khóa</a></li>
+                            <li><a href="@Url.Action("VanPhongPham", "SanPham")">Văn phòng phẩm</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Phụ kiện & Công nghệ
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:darkgrey">
+                            <li><a href="@Url.Action("TrangSuc", "SanPham")">Trang sức</a></li>
+                            <li><a href="@Url.Action("DuLich", "SanPham")">Phụ kiện du lịch</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Quà lưu niệm
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" style="background-color:darkgrey">
+                            <li><a href="@Url.Action("Idol", "SanPham")">Bộ sưu tập idol</a></li>
+                            <li><a href="@Url.Action("TrungBay", "SanPham")">Trưng bày</a></li>
+                            <li><a href="@Url.Action("GiaDung", "SanPham")">Gia dụng</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="box ">
+                            <div class="container-1">
+                                <form action="~/Admin/SanPham/SearchByName" method="get">
+                                    <span class="icon"><i class="fa fa-search"></i></span>
+                                    <input type="search" name="name" id="search" placeholder=" Search..." />
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @*<li>@Html.ActionLink("Admin", "Index", "Login", new { area = "Admin" }, null)</li>*@
+                    @*<li>@Html.Action("GiohangPartial", "GioHang")</li>*@
+                    <li><a href="~/Admin/SanPham/XemCTHD"><span class="glyphicon glyphicon-sort-by-order"></span>Hóa đơn</a></li>
+                    <li><a href="~/Admin/Login/SignOut"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+  
+    <div class="container body-content">
+        @RenderBody()
+        <br />
+
+        <footer>
+
+            <div class="lop-ban-quyen">
+                <hr />
+                <div class="lop-ban-q-trai">
+                    @*<img src="~/Content/Image/169985545_1146182399181886_71678872880803340_n.png" />*@
+                    <div id="map" style="width:80%">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.7558634099737!2d106.65818971408213!3d10.75328946256249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ef6ca551517%3A0xc331bdcaa0992e4b!2zNzM2IE5ndXnhu4VuIFRyw6NpLCBQaMaw4budbmcgMTEsIFF14bqtbiA1LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1619421665431!5m2!1svi!2s" width="80%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="lop-ban-q-phai">
+                    <h3>
+                        LIÊN HỆ:
+                    </h3>
+                    <p> Kênh mua sắm Nguyên liệu- Dụng cụ tốt nhất tại Việt Nam</p>
+                    @*<div class="input-group-prepend">*@
+                    <p> <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; Địa chỉ: 736 Nguyễn Trãi phường 11 quận 5 TPHCM</i></p>
+                    <p><i class="fa fa-phone" aria-hidden="true">&nbsp; Điện thoại :19001080</i></p>
+                    <p><i class="fa fa-envelope-o" aria-hidden="true">&nbsp;Mail: www.Dungculambanh.vn</i></p>
+
+                    @*</div>*@
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

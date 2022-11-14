@@ -1,0 +1,65 @@
+﻿@model QLBanHangLuuNiem.Models.SanPham
+@using QLBanHangLuuNiem.Models;
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .lop-thong-tin-sp {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .lop-thong-tin-sp-trai {
+        float: left;
+        width: 48%;
+        text-align: center;
+        /*        border: 3px solid transparent;
+        border-color: black;
+        border-radius: 20px;
+        background-color: white;*/
+    }
+
+    .lop-thong-tin-sp-phai {
+        float: right;
+        width: 50%;
+        text-align: left;
+        word-wrap: break-word;
+        padding-top: 30px;
+        font-size: 110%;
+        padding-left: 100px;
+        font-weight: bold;
+    }
+</style>
+<h2>&nbsp;</h2>
+<h2>Details</h2>
+
+<div>
+    <h4>SanPham</h4>
+    <hr />
+    <div class="lop-thong-tin-sp">
+        <div class="lop-thong-tin-sp-trai">
+            <img width="70%" src="/@Model.HinhSP" />
+        </div>
+        <div class="lop-thong-tin-sp-phai">
+            <p style="font-size:200%">@Html.DisplayFor(model => model.TenSP)</p>
+            <p style="font-size:150%">Giá bán: @Html.DisplayFor(model => model.DonGia)</p>
+            <p>Đơn vị tính: @Html.DisplayFor(model => model.DonViTinh)</p>
+            <p>Năm sản xuất: @Html.DisplayFor(model => model.NamSanXuat)</p>
+            <p>Quốc gia: @Html.DisplayFor(model => model.QuocGia)</p>
+            <p>Phân loại: @Html.DisplayFor(model => model.PhanLoai.TenPhanLoai)</p>
+            <p>
+                <a class="btn btn-success btn-sm" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP=Model.MaSP,@strURL=Request.Url.ToString()})">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Thêm vào giỏ
+                </a>
+            </p>
+            <br />
+            <p>
+                @*@Html.ActionLink("Edit", "Edit", new { id = Model.MaSP }) |*@
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+
+

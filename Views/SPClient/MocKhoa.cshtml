@@ -1,0 +1,78 @@
+﻿<style>
+    .lop-sp {
+        float: left;
+        width: 25.5%;
+        text-align: center;
+        padding: 10px 5px;
+        margin: 0 auto;
+        font-weight: bold;
+        word-wrap: break-word;
+        margin: 10px;
+        margin-left: 5%;
+        margin-right: 2%;
+        border: 2px solid transparent;
+        border-color: gray;
+        font-size: 100%;
+    }
+
+
+        .lop-sp:hover {
+            transform: scale(1.07);
+        }
+
+        .lop-sp .tua-sp {
+            word-wrap: break-word;
+            font-size: 100%;
+        }
+
+        .lop-sp .lop-hinh {
+            text-align: center;
+            padding: 0;
+        }
+</style>
+@model IEnumerable<QLBanHangLuuNiem.Models.SanPham>
+
+@{
+    ViewBag.Title = "Mockhoa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>&nbsp;</h2>
+@foreach (var item in Model)
+{
+    <div class="lop-sp">
+        <div class="lop-hinh">
+            @*<img width="100%" src="/@item.HinhSP" alt="HinhSP" />*@
+            <a href='@Url.Action("Details", "SPClient", new { id = item.MaSP })'>
+                @*<img src='@Url.Content("~/Content/Images/MyLinkImage.png")' />*@
+                <img width="100%" src="/@item.HinhSP" alt="HinhSP" />
+            </a>
+        </div>
+        <p class="tua-sp" style="font-size:110%">
+
+            <a href='@Url.Action("Details", "SPClient", new { id = item.MaSP })'>
+                @Html.DisplayFor(modelItem => item.TenSP)
+            </a>
+        </p>
+        <p style="color:sandybrown">
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </p>
+        <p>
+            @*<a class="btn btn-success btn-sm" href="@Url.Action("ThemGioHang", "GioHang", new { iMaSP=item.MaSP})">*@
+            <a class="btn btn-success btn-sm" href="@Url.Action("ThemGioHang", "GioHang", new { @iMaSP=item.MaSP,@strURL=Request.Url.ToString()})">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Thêm vào giỏ
+            </a>
+        </p>
+        <p>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.MaSP }) |*@
+            @*@Html.ActionLink("Details", "Details", new { id = item.MaSP })*@
+            @*@Html.ActionLink("Delete", "Delete", new { id = item.MaSP })*@
+
+        </p>
+    </div>
+}
+<br />
+
+
+
+

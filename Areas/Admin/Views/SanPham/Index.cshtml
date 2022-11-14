@@ -1,0 +1,116 @@
+﻿<style>
+    th{
+        text-align:center;
+    }
+    td{
+          text-align:center;
+    }
+</style>
+@*@model IEnumerable<QLBanHangLuuNiem.Models.SanPham>*@
+@using QLBanHangLuuNiem.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SanPham>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Laoyoutlogin.cshtml";
+}
+@if (Model.Any() && Model != null) { 
+<h2>Index</h2>
+
+<p>
+    @*~/Admin/SanPham/XemCTHD*@
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TenSP)*@
+            Tên Sản Phẩm
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DonViTinh)*@
+            Đơn vị tính
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DonGia)*@
+            Đơn giá
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.NamSanXuat)*@
+            Năm sản xuất
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.QuocGia)*@
+            Quốc gia
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.PhanLoai.TenPhanLoai)*@
+            Phân loại
+        </th>
+        <th style="text-align:center">
+            @*@Html.DisplayNameFor(model => model.HinhSP)*@
+            Hình sản phẩm
+        </th>
+        
+        <th>Chức năng</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonViTinh)
+        </td>
+        <td>
+            
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NamSanXuat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuocGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhanLoai.TenPhanLoai)
+        </td>
+        <td width="25%" style="text-align:center">
+            <img width="50%" src="/@item.HinhSP" alt="HinhSP" />
+        </td>
+
+
+        <td>
+            @*<a href="~/Admin/SanPham/Edit?id=@item.MaSP"></a>*@
+            <a href='@Url.Action("Edit", "SanPham", new { id=item.MaSP })'>
+                <i class="fas fa-edit" style="font-size:25px"></i>
+            </a>       
+            <a href='@Url.Action("Delete", "SanPham", new { id=item.MaSP })'>
+                <i class="far fa-trash-alt" style="font-size:25px"></i>
+            </a>
+            <a href='@Url.Action("Details", "SanPham", new { id=item.MaSP })'>
+                <i class="fa fa-info" aria-hidden="true" style="font-size:30px"></i>
+            </a>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.MaSP }, new { @class = "fas fa-edit" })*@
+            @*@Html.ActionLink("Details", "Details", new { id=item.MaSP }, new { @class = "btn btn-success" })*@ 
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.MaSP }, new { @class = "btn btn-success" })*@
+        </td>
+    </tr>
+}
+
+</table>
+<div style="text-align:center;clear:both">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+</div>
+}
+else
+{
+    <h3>Hiện không có sản phẩm nào cả</h3>
+}
+@Scripts.Render("~/bundles/bootstrap")

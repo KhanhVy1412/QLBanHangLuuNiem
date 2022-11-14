@@ -1,0 +1,91 @@
+﻿@model IEnumerable<QLBanHangLuuNiem.Models.SanPham>
+
+@{
+    ViewBag.Title = "Balo";
+    Layout = "~/Areas/Admin/Views/Shared/Laoyoutlogin.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<h2>Phụ Kiện Du Lịch</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.TenSP)*@
+            TenSP
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DonViTinh)*@
+            DonViTinh
+
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DonGia)*@
+            DonGia
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.NamSanXuat)*@
+            NamSanXuat
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.QuocGia)*@
+            QuocGia
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.HinhSP)*@
+            HinhSP
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.PhanLoai.TenPhanLoai)*@
+            PhanLoai
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonViTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamSanXuat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuocGia)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.HinhSP)*@
+                <img width="50%" src="/@item.HinhSP" alt="HinhSP" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhanLoai.TenPhanLoai)
+            </td>
+            <td>
+                @*<a href="~/Admin/SanPham/Edit?id=@item.MaSP"></a>*@
+                <a href='@Url.Action("Edit", "SanPham", new { id=item.MaSP })'>
+                    <i class="fas fa-edit" style="font-size:25px"></i>
+                </a>
+                <a href='@Url.Action("Delete", "SanPham", new { id=item.MaSP })'>
+                    <i class="far fa-trash-alt" style="font-size:25px"></i>
+                </a>
+                <a href='@Url.Action("Details", "SanPham", new { id=item.MaSP })'>
+                    <i class="fa fa-info" aria-hidden="true" style="font-size:30px"></i>
+                </a>
+                @*@Html.ActionLink("Edit", "Edit", new { id=item.MaSP }, new { @class = "fas fa-edit" })*@
+                @*@Html.ActionLink("Details", "Details", new { id=item.MaSP }, new { @class = "btn btn-success" })*@
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.MaSP }, new { @class = "btn btn-success" })*@
+            </td>
+        </tr>
+    }
+
+</table>

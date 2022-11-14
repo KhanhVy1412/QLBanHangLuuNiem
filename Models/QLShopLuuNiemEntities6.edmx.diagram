@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8cbbfc28bd4f4c24b07f97810f2cdecf" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.CTHD" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.HoaDon" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.KhachHang" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.NhanVien" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.PhanLoai" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.Quyen" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.SanPham" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.TaiKhoan" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="QLShopLuuNiemModel.FK_CTHD_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="QLShopLuuNiemModel.FK_CTHD_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="QLShopLuuNiemModel.FK_HoaDon_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="QLShopLuuNiemModel.FK_NhanVien_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="QLShopLuuNiemModel.FK_SanPham_PhanLoai" ManuallyRouted="false" />
+        <AssociationConnector Association="QLShopLuuNiemModel.FK_TaiKhoan_Quyen" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.ThanhToan" Width="1.5" PointX="6.125" PointY="9.75" />
+        <AssociationConnector Association="QLShopLuuNiemModel.FK_HoaDon_ThanhToan" />
+        <EntityTypeShape EntityType="QLShopLuuNiemModel.GiaoHang" Width="1.5" PointX="0.75" PointY="12.75" />
+        <AssociationConnector Association="QLShopLuuNiemModel.FK_HoaDon_GiaoHang" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
